@@ -39,10 +39,8 @@ class DataCollector():
         now = datetime.now()
         timestamp = str(datetime.timestamp(now)).replace('.','')
         #Data simplification for speed
-        if speed > 0.1 and speed < 0.7:
-            speed = 0.2
-        elif speed > 0.7:
-            speed = 0.6
+        if speed > 0.1:
+            speed = 1
         else:
             speed = 0
         

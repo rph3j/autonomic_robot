@@ -13,10 +13,9 @@ ifAuto = False
 
 
 model_v1 = load_model('/home/rph3j/Magisterka/Learning/model_rotation_v1.h5', custom_objects ={ "mse" : MeanSquaredError() })
-s_model_v1 = load_model('/home/rph3j/Magisterka/Learning/model_speed_v1.h5', custom_objects ={ "mse" : MeanSquaredError() })
 a_model = load_model('/home/rph3j/Magisterka/Learning/model_rotation.h5', custom_objects ={ "mse" : MeanSquaredError() })
 s_model = load_model('/home/rph3j/Magisterka/Learning/model_speed.h5', custom_objects ={ "mse" : MeanSquaredError() })
-v_model = load_model('/home/rph3j/Magisterka/Learning/model_vertical.h5', custom_objects ={ "mse" : MeanSquaredError() })
+v_model = load_model('/home/rph3j/Magisterka/Learning/model_vertical.h5')
 
 
 def preProcess(img):
@@ -43,31 +42,38 @@ def stertAuto():
 
 def stertAuto_v2():
     global ifAuto
+    v_count = 0
+    s_count = 0
     while ifAuto:
         img = Camera.getIMG()
         img = np.asarray(img)
         img = preProcess(img)
         img = np.array([img])
 
-        angle = round(float(model_v1.predict(img)),2)
-        speed = float(s_model_v1.predict(img))
-        #vertical = v_model.predict(img)
-        print("Prędkość",speed)
-        print("Skęt",angle)
-        if round(angle,1) > 0 and round(speed,2) < 0.1:
-            speed = -0.2
-        if round(speed,3) < 0.01:
-            autoChange(False)
+        angle = round(float(a_model.predict(img)),2)
+        speed = round(float(s_model.predict(img)),2)
+        vertical = v_model.predict(img)
+        if speed > 0:
+            jeepMotor.run(speedPer,-angle)
         else:
-            jeepMotor.run(-speed,-angle)
-        #i = np.argmax(vertical[0])
-       # d = [-1,0,1][i]
-       # print(vertical)
-        #print("Weertykalnie",d)
-        """if round(vertical) != 0:
-            sleep(1)
-            autoChange(False)"""
-        sleep(0.0001)
+            if s_count < 3:
+                s_count += 1
+            else:
+                autoChange(False)
+                s_count = 0
+        v_i = np.argmax(vertical[0])
+        v_d = [-1,0,1][v_i]
+        print(vertical)
+        print("Weertykalnie",v_d)
+        if round(v_d) != 0:
+            if v_count < 3:
+                v_count += 1
+            else:
+                jeepMotor.run(speedPer,0,v_d)
+                sleep(1)
+                autoChange(False)
+                v_count = 0
+        sleep(0.001)
     if not ifAuto:
         jeepMotor.stop()
 

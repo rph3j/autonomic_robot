@@ -142,6 +142,9 @@ def createModel(ver, lr = 0.0001):
     if ver == 3:
         model.add(Dense(3,activation='softmax'))
         model.compile(optimizer=Adam(learning_rate=lr),loss='sparse_categorical_crossentropy',metrics=['accuracy'])
+    elif ver == 2:
+        model.add(Dense(1,activation='sigmoid'))
+        model.compile(optimizer=Adam(learning_rate=lr),loss='binary_crossentropy', metrics=['accuracy'])
     else:
         model.add(Dense(1))
         model.compile(optimizer=Adam(learning_rate=lr),loss='mse')

@@ -86,6 +86,6 @@ def learn(ver=1,lr=0.0001,epoch=10,samples = 200):
     progres = 100
 
 if __name__ == '__main__':
-    #learn(2,1e-4,10,500) # zmieniona koncepcja
+    learn(2,1e-4,10,1000) # zmieniona koncepcja
     learn(3,1e-4,20,400)
     #learn(1,1e-4,30,450)
