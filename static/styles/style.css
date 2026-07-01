@@ -1,0 +1,88 @@
+body{
+    margin: 0;
+    padding: 20px;
+    background: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.camera-box{
+    width: 667px;
+    height: 500px;
+    background: #222;
+    border: 2px solid #444;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.camera-box img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bottom-panel{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.controls{
+    background: #1b1b1b;
+    padding: 20px;
+    border-radius: 12px;
+    width: 300px;
+}
+
+.controls-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(3, 80px);
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    font-size: 28px;
+    border: none;
+    border-radius: 10px;
+    background: #333;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover{
+    background: #555;
+}
+
+.speed-panel{
+    flex: 1;
+    background: #1b1b1b;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.speed-value{
+    font-size: 48px;
+    margin-top: 20px;
+    color: #00ff99;
+}
+
+.label{
+    color: #aaa;
+    font-size: 18px;
+}

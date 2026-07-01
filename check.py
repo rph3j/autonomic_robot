@@ -1,0 +1,2 @@
+from Raspi_MotorHAT import Raspi_MotorHAT
+print(Raspi_MotorHAT.__version__)

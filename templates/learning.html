@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sterowanie Manualne</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/main.css') }}">
+</head>
+<body>
+
+<div class="content">
+    <button id="startBtnRotation">Rozpocznij A</button> <br><br>
+    <button id="startBtnSpeed">Rozpocznij S</button> <br><br>
+    <button id="startBtnVertical">Rozpocznij V</button> <br><br>
+    <div id="loaderContainer" style="display:none;">
+        <div class="progress-bar">
+            <div id="progress"></div>
+        </div>
+
+        <p id="statusText">Oczekiwanie...</p>
+    </div>
+</div>
+
+<script src="{{ url_for('static',filename='js/learn.js') }}"></script>
+
+</body>
+</html>

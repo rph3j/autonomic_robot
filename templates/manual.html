@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sterowanie Manualne</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/main.css') }}">
+</head>
+<body>
+
+<h1>Sterowanie Manualne</h1>
+<h2>Kamera</h2>
+
+<div class="container">
+
+    <div class="status">
+
+        <h2>Status</h2>
+
+        <p>Prędkość: <span id="speed">0</span></p>
+
+        <p>Kierunek: <span id="direction">STOP</span></p>
+
+        <p>Dane:
+            <span id="dataStatus">
+                Brak
+            </span>
+        </p>
+        <label class="control">
+            <span>Zablokowana prędkość 17%</span>
+
+            <input type="checkbox" id="restrictedSpeed">
+            <div class="toggle"></div>
+        </label>
+
+        <label class="control">
+            <span>Stałe wyłączenie silników</span>
+
+            <input type="checkbox" id="engines">
+            <div class="toggle"></div>
+        </label>
+
+    </div>
+
+     <div class="camera">
+
+        <img src="http://127.0.0.1:5000/video_feed" alt="Podgląd kamery">
+
+    </div>
+    
+    <div class="status">
+
+        <h2>Dane związane z kierunkeim</h2>
+
+        <p>Ilość zdjęć: <span id="A_IMG">0</span></p>
+
+        <p>Ilość ploków csv: <span id="a_csv">0</span></p>
+
+        <h2>Danze związane z prędkością</h2>
+        <p>Ilość zdjęć: <span id="S_IMG">0</span></p>
+
+        <p>Ilość ploków csv: <span id="s_csv">0</span></p>
+
+        <h2>Dane związane z ruchem wertykalnym</h2>
+        <p>Ilość zdjęć: <span id="V_IMG">0</span></p>
+
+        <p>Ilość ploków csv: <span id="v_csv">0</span></p>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static',filename='js/manual.js') }}"></script>
+
+</body>
+</html>
