@@ -67,7 +67,7 @@ def learn(ver=1,lr=0.0001,epoch=10,samples = 200):
     #7 - saving the model
     status = "Zapisywanie modelu"
     progres = 90
-    model.save('model_'+name+'.h5')
+    model.save('model_'+name+'_OPT_RMSprop.h5')
     print('Model Saved')
 
     #8 - generating learning plot
@@ -78,7 +78,7 @@ def learn(ver=1,lr=0.0001,epoch=10,samples = 200):
     plt.legend(['Training','Validation'])
     plt.title('Loss_'+name)
     plt.xlabel('Epoch')
-    p_new = os.path.join(plots_path,"Learning_Plot_"+name+".png")
+    p_new = os.path.join(plots_path,"Learning_Plot_OPT_RMSprop_"+name+".png")
     plt.savefig(p_new)
     plt.close()
 
@@ -86,6 +86,6 @@ def learn(ver=1,lr=0.0001,epoch=10,samples = 200):
     progres = 100
 
 if __name__ == '__main__':
-    learn(2,1e-4,10,1000) # zmieniona koncepcja
-    learn(3,1e-4,20,400)
-    #learn(1,1e-4,30,450)
+    #learn(2,1e-4,10,1000) # zmieniona koncepcja
+    #learn(3,1e-4,20,400)
+    learn(1,1e-4,30,700)

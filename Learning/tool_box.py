@@ -8,6 +8,8 @@ from datetime import datetime
 
 
 from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.optimizers import SGD
+from tensorflow.keras.optimizers import RMSprop
 from tensorflow.keras.models import Sequential 
 from tensorflow.keras.layers import Convolution2D, Flatten, Dense
 from tensorflow.keras.losses import Huber
@@ -51,7 +53,7 @@ def dataRegulation(data,t,samples = 200, dispaly =True):
         plt.title("Raw" + t)
         plt.xlabel("Value")
         plt.ylabel("Number of samples")
-        p_new = os.path.join(plots_path,"Raw_"+t+".png")
+        p_new = os.path.join(plots_path,"Raw_OPT_RMSprop_"+t+".png")
         plt.savefig(p_new)
         plt.close()
 
@@ -77,7 +79,7 @@ def dataRegulation(data,t,samples = 200, dispaly =True):
         plt.title("Revised " +t)
         plt.xlabel("Value")
         plt.ylabel("Number of samples")
-        p_new = os.path.join(plots_path,"Revised_"+t+".png")
+        p_new = os.path.join(plots_path,"Revised_OPT_RMSprop_"+t+".png")
         plt.savefig(p_new)
         plt.close()
     return data
@@ -147,7 +149,7 @@ def createModel(ver, lr = 0.0001):
         model.compile(optimizer=Adam(learning_rate=lr),loss='binary_crossentropy', metrics=['accuracy'])
     else:
         model.add(Dense(1))
-        model.compile(optimizer=Adam(learning_rate=lr),loss='mse')
+        model.compile(optimizer=RMSprop(learning_rate=lr),loss='mse')
     return model
 #Random selection from training data pool
 def d_gen(imgPath,angles,bathSize,flag,ver=1):

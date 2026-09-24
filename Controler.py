@@ -149,7 +149,8 @@ class JoyControl():
 
 if __name__ == '__main__':
     ct = JoyControl()
-    ct.EventListener()    
+    ct.EventListener()   
+    print("started") 
 
 
 

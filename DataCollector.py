@@ -47,17 +47,17 @@ class DataCollector():
 
         #Data simplifications for the turn
         if rotation > 0:
-            if rotation > 0.5:
-                rotation = 0.6
+            if rotation > 0.6:
+                rotation = 0.8
             else:
-                rotation = 0.4
+                rotation = 0.6
         elif rotation == 0:
             rotation == 0
         else:
-            if rotation < -0.5:
-                rotation = -0.6
+            if rotation < -0.6:
+                rotation = -0.8
             else:
-                rotation = -0.4
+                rotation = -0.6
         #Data simplifications for vertical movement
         if vertical > 0:
             vertical = 1

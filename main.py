@@ -1,5 +1,6 @@
 import sys
 import os
+import gc
 from flask import Flask, Response, jsonify, render_template, send_from_directory
 from Controler import JoyControl
 import autoRunMain as ar
@@ -28,6 +29,7 @@ def main():
 
 @app.route("/manual")
 def manual():
+    gc.collect()
     thread_control = threading.Thread(target=joy.EventListener)
     thread_control.daemon = True
     thread_control.start()
@@ -35,10 +37,12 @@ def manual():
 
 @app.route("/autonomous")
 def auto():
+    gc.collect()
     return render_template("autonomous.html")
 
 @app.route("/learning")
 def learning():
+    gc.collect()
     return render_template("learning.html")
 ######################################
 # ------ Manuel endpoints ----------
